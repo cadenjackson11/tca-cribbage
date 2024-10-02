@@ -4,7 +4,9 @@ import {
   createHashRouter,
   RouterProvider,
 } from "react-router-dom";
-import {Home} from './Home'
+import {Home} from './Home';
+import {Setup} from './Setup';
+import {Play} from './Play';
 
 const router = createHashRouter(
   [
@@ -15,19 +17,19 @@ const router = createHashRouter(
 
     {
       path: "/setup",
-      element: <div>Setup</div>
+      element: <Setup />
 
     },
 
     {
       path: "/play",
-      element: <div>Play</div>
+      element: <Play />
     },
   ]
 );
 
 
-function App() {
+const App = () => {
   return (
     <div className="App p-3 ">
 
