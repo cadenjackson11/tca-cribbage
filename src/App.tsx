@@ -8,7 +8,7 @@ import {Home} from './Home';
 import {Setup} from './Setup';
 import {Play} from './Play';
 
-import { GameResult } from './game-results';
+import { GameResult, LeaderboardEntry, getLeaderboard } from './game-results';
 
 
 
@@ -57,38 +57,51 @@ const dummyGameResults: GameResult[] = [
   }
 ];
 
-const router = createHashRouter(
-  [
-    {
-      path: "/",
-      element: <Home />
-    },
-
-    {
-      path: "/setup",
-      element: <Setup />
-
-    },
-
-    {
-      path: "/play",
-      element: <Play />
-    },
-  ]
-);
-
 
 const App = () => {
 
-  const [gameResults, setGameResults] = useState(dummyGameResults);
-  // const [gameResults, setGameResults] = useState<GameResult>([]);
+  //react hooks first
 
+  const [gameResults, setGameResults] = useState(dummyGameResults);
+  //const [gameResults, setGameResults] = useState<GameResult[]>([]);
+
+
+  // other code... calculated state
+
+  const addNewGameResult = (newResult: GameResult) => setGameResults([
+    ...gameResults,
+    newResult
+  ]);
+
+  const myRouter = createHashRouter(
+    [
+      {
+        path: "/",
+        element: <Home 
+          leaderboardData={getLeaderboard(gameResults)}
+        />
+      },
+      {
+        path: "/setup",
+        element: <Setup />
+      },
+      {
+        path: "/play",
+        element: <Play 
+          addNewGameResult={addNewGameResult}
+        />,
+      },
+    ]
+  )
+
+
+  //return jsx
 
   return (
     <div className="App p-3 ">
 
       <RouterProvider 
-        router={router}
+        router={myRouter}
       />
     </div>
     

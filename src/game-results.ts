@@ -11,7 +11,7 @@ export type GameResult = {
 };
 
 
-type LeaderboardEntry = {
+export type LeaderboardEntry = {
     wins: number;
     losses: number;
     avg: string;
@@ -23,7 +23,7 @@ type LeaderboardEntry = {
 //  Exported funcs...
 //
 
-const getLeaderboard = (
+export const getLeaderboard = (
   results: GameResult[]
   ): LeaderboardEntry[] => getPreviousPlayers(results)
     .map(
@@ -43,7 +43,7 @@ const getLeaderboard = (
 // Helper funcs...
 //
 
-const getPreviousPlayers = (results: GameResult[]) => {
+export const getPreviousPlayers = (results: GameResult[]) => {
     
   const previousPlayers = results.flatMap(
       x => x.players
@@ -59,7 +59,7 @@ const getPreviousPlayers = (results: GameResult[]) => {
 };
 
 
-const getLeaderboardEntry = (
+export const getLeaderboardEntry = (
   results: GameResult[]
   , player: string
 ): LeaderboardEntry => {
