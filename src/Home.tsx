@@ -21,7 +21,7 @@ export const Home: React.FC<HomeProps> = ({
               onClick={() => nav('/setup')}>
       Play</button>
       <div className="card bg-base-100 shadow-xl">
-        <div className="card body p-3">
+        <div className="card body p-3 overflow-x-hidden">
           <h2 card-title>Leaderboard</h2>
           {
             leaderboardData.length > 0
