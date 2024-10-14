@@ -17,20 +17,25 @@ export const Play: React.FC<PlayProps> = ({
   return(
     <div>
       <h1 className='text-xl font-bold mb-3'>Play</h1>
-      <button className="btn btn-success mb-3"
-              
-              onClick={() => {
-                addNewGameResult({
-                  startTime:"",
-                  endTime: "",
-                  winner: "Chewie",
-                  players: currentPlayers
-                })
-                nav(-2)
-              }}
-      >
-        {x} Won
-      </button>
+      {
+        currentPlayers.map(x => (
+          <button className="btn btn-success mb-3"
+                  
+          onClick={() => {
+            addNewGameResult({
+              startTime:"",
+              endTime: "",
+              winner: x,
+              players: currentPlayers
+            })
+            nav(-2)
+          }}
+  >
+    {x} Won
+  </button>
+        ))
+      }
+      
     </div>
   );
 }

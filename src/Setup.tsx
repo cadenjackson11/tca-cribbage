@@ -30,7 +30,8 @@ export const Setup: React.FC<SetupProps> = ({
                     .filter(x => x.checked)
                     .map(x => x.name)
                     
-                )
+                );
+                myNav('/play')
               }}
       >Start Playing</button>
       <div className="card bg-base-100 shadow-xl" >
