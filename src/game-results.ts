@@ -39,24 +39,28 @@ export const getLeaderboard = (
   ;
 
 
+  export const getPreviousPlayers = (results: GameResult[]) => {
+    
+    const previousPlayers = results.flatMap(
+        x => x.players
+    );
+
+    return(
+        [
+            ...new Set(previousPlayers)
+        ].sort(
+            (a, b) => a.localeCompare(b)
+        )
+    );
+};
+
+
+
 //
 // Helper funcs...
 //
 
-export const getPreviousPlayers = (results: GameResult[]) => {
-    
-  const previousPlayers = results.flatMap(
-      x => x.players
-  );
 
-  return(
-      [
-          ...new Set(previousPlayers)
-      ].sort(
-          (a, b) => a.localeCompare(b)
-      )
-  );
-};
 
 
 export const getLeaderboardEntry = (

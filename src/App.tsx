@@ -8,7 +8,7 @@ import {Home} from './Home';
 import {Setup} from './Setup';
 import {Play} from './Play';
 
-import { GameResult, LeaderboardEntry, getLeaderboard } from './game-results';
+import { GameResult, LeaderboardEntry, getLeaderboard, getPreviousPlayers } from './game-results';
 
 
 
@@ -83,7 +83,8 @@ const App = () => {
       },
       {
         path: "/setup",
-        element: <Setup />
+        element: <Setup
+        previousPlayers={getPreviousPlayers(gameResults)} />
       },
       {
         path: "/play",
