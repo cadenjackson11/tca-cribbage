@@ -3,9 +3,14 @@ import { GameResult } from "./game-results";
 
 interface PlayProps {
   addNewGameResult: (gr: GameResult) => void;
+  currentPlayers: string[];
 }
 
-export const Play: React.FC<PlayProps> = ({addNewGameResult}) => {
+export const Play: React.FC<PlayProps> = ({
+  addNewGameResult,
+  currentPlayers
+
+}) => {
 
   const nav = useNavigate();
 
@@ -19,14 +24,13 @@ export const Play: React.FC<PlayProps> = ({addNewGameResult}) => {
                   startTime:"",
                   endTime: "",
                   winner: "Chewie",
-                  players: [
-                    "Chewie",
-                    "Han"
-                  ]
+                  players: currentPlayers
                 })
                 nav(-2)
               }}
-      >Game Over</button>
+      >
+        {x} Won
+      </button>
     </div>
   );
 }

@@ -8,7 +8,7 @@ import {Home} from './Home';
 import {Setup} from './Setup';
 import {Play} from './Play';
 
-import { GameResult, LeaderboardEntry, getLeaderboard, getPreviousPlayers } from './game-results';
+import { GameResult, LeaderboardEntry, getLeaderboard, getPreviousPlayers, } from './game-results';
 
 
 
@@ -65,6 +65,8 @@ const App = () => {
   const [gameResults, setGameResults] = useState(dummyGameResults);
   //const [gameResults, setGameResults] = useState<GameResult[]>([]);
 
+  const [currentPlayers, setCurrentPlayers] = useState<string[]>([])
+
 
   // other code... calculated state
 
@@ -84,12 +86,15 @@ const App = () => {
       {
         path: "/setup",
         element: <Setup
-        previousPlayers={getPreviousPlayers(gameResults)} />
+          previousPlayers={getPreviousPlayers(gameResults)}
+          setCurrentPlayers={setCurrentPlayers}
+         />
       },
       {
         path: "/play",
         element: <Play 
           addNewGameResult={addNewGameResult}
+          currentPlayers={currentPlayers}
         />,
       },
     ]
