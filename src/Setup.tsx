@@ -44,10 +44,13 @@ export const Setup: React.FC<SetupProps> = ({
 
   }
 
+  const twoPlayersChosen = availablePlayers.filter(x => x.checked).length !== 2;
+
   return(
     <div>
       <h1 className='text-xl font-bold mb-3'>Setup</h1>
       <button className="btn btn-success mb-3"
+              disabled={twoPlayersChosen}
               onClick={() => {
                 setCurrentPlayers(
                   availablePlayers
@@ -57,12 +60,16 @@ export const Setup: React.FC<SetupProps> = ({
                 );
                 myNav('/play')
               }}
-      >Start Playing</button>
+      >{
+        twoPlayersChosen
+        ? "Choose Two Players"
+        : "Start Playing"
+      }</button>
       <div className="card bg-base-100 shadow-xl" >
         <div className="card-body">
           <div className="join">
             <input className="input input-bordered join-item" placeholder="Enter New Player Name" value={newPlayerName} onChange={(e) => setNewPlayerName(e.target.value)}/>
-            <button className="btn join-item" onClick={validateAndAddNewPlayer}>Add</button>
+            <button className="btn join-item" disabled={newPlayerName.length === 0} onClick={validateAndAddNewPlayer}>Add</button>
           </div>
           {
             availablePlayers.map(x => (
