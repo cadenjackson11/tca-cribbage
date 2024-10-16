@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { validate } from "uuid";
 
 
 interface SetupProps {
@@ -19,6 +20,29 @@ export const Setup: React.FC<SetupProps> = ({
     , checked: false
   })));
 
+  const [newPlayerName, setNewPlayerName] = useState("")
+
+  const validateAndAddNewPlayer = () => {
+    //bail if nothing typed in the name or if there is a duplicate name
+
+    if (newPlayerName.length === 0 ||  availablePlayers.some(
+      x => x.name.toUpperCase() === newPlayerName.toUpperCase()
+    )) {
+      return;
+    }
+
+    setAvailablePlayers([
+      ...availablePlayers,
+      {
+        name: newPlayerName
+        , checked: true
+      }
+    ].sort(
+      (a, b) => a.name.toUpperCase().localeCompare(b.name.toUpperCase())
+    )
+  );
+
+  }
 
   return(
     <div>
@@ -36,6 +60,10 @@ export const Setup: React.FC<SetupProps> = ({
       >Start Playing</button>
       <div className="card bg-base-100 shadow-xl" >
         <div className="card-body">
+          <div className="join">
+            <input className="input input-bordered join-item" placeholder="Enter New Player Name" value={newPlayerName} onChange={(e) => setNewPlayerName(e.target.value)}/>
+            <button className="btn join-item" onClick={validateAndAddNewPlayer}>Add</button>
+          </div>
           {
             availablePlayers.map(x => (
               <div className="form-control">
