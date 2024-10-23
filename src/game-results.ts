@@ -1,3 +1,12 @@
+import { durationFormatter } from 'human-readable'
+
+const formatGameDuration = durationFormatter<string>();
+
+const formatLastPlayed = durationFormatter<string>({
+    allowMultiples: ["y", "mo", "d"]
+});
+
+
 //
 //  Type Definitions
 //
@@ -68,23 +77,19 @@ export const getGeneralFacts = (results: GameResult[]): GeneralFactsDisplay => {
     const gameEndTimesInMilliseconds = results.map(x => Date.parse(x.endTime));
 
     const lastPlayedInMilliseconds = now - Math.max(...gameEndTimesInMilliseconds);
-    const lastPlayedInDays = lastPlayedInMilliseconds / 1000 / 60 / 60 / 24;
 
     const gameDurationsInMilliseconds = results.map(
         x => Date.parse(x.endTime) - Date.parse(x.startTime)
     );
 
     const shortestGameInMilliseconds = Math.min(...gameDurationsInMilliseconds);
-    const shortestGameInMinutes = shortestGameInMilliseconds / 1000 / 60;
-
     const longestGameInMilliseconds = Math.max(...gameDurationsInMilliseconds);
-    const longestGameInMinutes = longestGameInMilliseconds / 1000 / 60;
 
     return {
-        lastPlayed: `${lastPlayedInDays.toFixed(0)} day(s) ago`
+        lastPlayed: `${formatLastPlayed(lastPlayedInMilliseconds)} ago`
         , totalGames: results.length
-        , shortestGame: `${shortestGameInMinutes.toFixed(1)} minutes`
-        , longestGame: `${longestGameInMinutes.toFixed(1)} minutes`
+        , shortestGame: formatGameDuration(shortestGameInMilliseconds)
+        , longestGame: formatGameDuration(longestGameInMilliseconds)
     };
 };
 
