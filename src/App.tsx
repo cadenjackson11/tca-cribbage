@@ -27,7 +27,7 @@ const dummyGameResults: GameResult[] = [
   }
   , {
       startTime: "2024-09-23T15:48:25.123Z"
-      , endTime: "2024-09-23T15:50:25.123Z"
+      , endTime: "2024-09-23T15:50:15.123Z"
       , winner: "Tom"
       , players: [
           "Harry"
@@ -37,8 +37,8 @@ const dummyGameResults: GameResult[] = [
       ]    
   }
   , {
-      startTime: ""
-      , endTime: ""
+      startTime: "2024-10-20T20:02:47.024Z"
+      , endTime: "2024-10-20T20:07:47.024Z"
       , winner: "Harry"
       , players: [
           "Harry"
@@ -47,8 +47,8 @@ const dummyGameResults: GameResult[] = [
       ]
   }
   , {
-      startTime: ""
-      , endTime: ""
+      startTime: "2024-10-20T20:08:47.024Z"
+      , endTime: "2024-10-20T20:23:37.024Z"
       , winner: "Tom"
       , players: [
           "Tom"
