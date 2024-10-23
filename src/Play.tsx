@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { GameResult } from "./game-results";
+import { useState } from "react";
 
 interface PlayProps {
   addNewGameResult: (gr: GameResult) => void;
@@ -14,6 +15,8 @@ export const Play: React.FC<PlayProps> = ({
 
   const nav = useNavigate();
 
+  const [startTimeState, setStartTimeState] = useState(new Date().toISOString())
+
   return(
     <div>
       <h1 className='text-xl font-bold mb-3'>Play</h1>
@@ -23,8 +26,8 @@ export const Play: React.FC<PlayProps> = ({
                   
           onClick={() => {
             addNewGameResult({
-              startTime:"",
-              endTime: "",
+              startTime: startTimeState,
+              endTime: new Date().toISOString(),
               winner: x,
               players: currentPlayers
             })

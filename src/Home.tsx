@@ -1,13 +1,14 @@
 import { useNavigate } from "react-router-dom";
-
-import { LeaderboardEntry, } from './game-results'
+import { LeaderboardEntry, GeneralFactsDisplay} from './game-results'
 
 interface HomeProps {
   leaderboardData: LeaderboardEntry[];
+  generalFactsData: GeneralFactsDisplay;
 }
 
 export const Home: React.FC<HomeProps> = ({
-  leaderboardData
+  leaderboardData,
+  generalFactsData
 }) => {
 
   //use a react hook for navigation
@@ -19,7 +20,56 @@ export const Home: React.FC<HomeProps> = ({
       
       <button className="btn btn-success mb-3 onClick={() => nav('/setup')}" 
               onClick={() => nav('/setup')}>
-      Play</button>
+      Play Cribbage</button>
+      <div className="card bg-base-100 shadow-xl mb-3">
+        <div className="card body p-3 overflow-x-hidden mb-3">
+          <h2 card-title>General Facts</h2>
+          {
+            leaderboardData.length > 0
+            ? (
+          <table className="table table-zebra">
+            <tbody>
+            <tr>
+                <td>
+                  Last Played
+                </td>
+                <th>
+                  {generalFactsData.lastPlayed}
+                </th>
+              </tr>
+              <tr>
+                <td>
+                  Shortest Game
+                </td>
+                <th>
+                  {generalFactsData.shortestGame}
+                </th>
+              </tr>
+              <tr>
+                <td>
+                  Longest Game
+                </td>
+                <th>
+                  {generalFactsData.longestGame}
+                </th>
+              </tr>
+              <tr>
+                <td>
+                  Total Games
+                </td>
+                <th>
+                  {generalFactsData.totalGames}
+                </th>
+              </tr>
+            </tbody>
+          </table>
+            )
+            : (
+              <p>Play a game to see the leaderboard!</p>
+            )
+          }
+        </div>
+      </div>
       <div className="card bg-base-100 shadow-xl">
         <div className="card body p-3 overflow-x-hidden">
           <h2 card-title>Leaderboard</h2>
