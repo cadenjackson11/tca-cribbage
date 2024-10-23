@@ -86,10 +86,18 @@ export const getGeneralFacts = (results: GameResult[]): GeneralFactsDisplay => {
     const longestGameInMilliseconds = Math.max(...gameDurationsInMilliseconds);
 
     return {
-        lastPlayed: `${formatLastPlayed(lastPlayedInMilliseconds)} ago`
+        lastPlayed: results.length > 0
+            ? `${formatLastPlayed(lastPlayedInMilliseconds)} ago`
+            : "You've Never Played"
+
         , totalGames: results.length
-        , shortestGame: formatGameDuration(shortestGameInMilliseconds)
-        , longestGame: formatGameDuration(longestGameInMilliseconds)
+
+        , shortestGame: results.length > 0
+            ? formatGameDuration(shortestGameInMilliseconds)
+            : "..."
+        , longestGame: results.length > 0 
+            ? formatGameDuration(longestGameInMilliseconds)
+            : "..."
     };
 };
 
