@@ -18,7 +18,7 @@ export const Setup: React.FC<SetupProps> = ({
   useEffect(
     () => setTitle('Setup'),
     []
-  )
+  );
 
   const myNav = useNavigate();
 
@@ -81,9 +81,9 @@ export const Setup: React.FC<SetupProps> = ({
           {
             availablePlayers.map(x => (
               <div className="form-control">
-                <label className="label123 cursor-pointer flex mt-3">
-                  <span className="label-text mr-3">{x.name}</span>
-                  <input type="checkbox" className="checkbox" checked={x.checked} onChange={() => setAvailablePlayers(
+                <label className="cursor-pointer flex mt-3">
+                  
+                  <input type="checkbox" className="checkbox mr-3" checked={x.checked} onChange={() => setAvailablePlayers(
                     availablePlayers.map(y => ({
                       ...y, 
                       checked: y.name === x.name
@@ -91,6 +91,7 @@ export const Setup: React.FC<SetupProps> = ({
                                   : y.checked
                     }))
                   )}/>
+                  <span className="label-text">{x.name}</span>
                 </label>
               </div>
             ))
