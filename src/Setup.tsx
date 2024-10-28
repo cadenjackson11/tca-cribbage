@@ -48,7 +48,7 @@ export const Setup: React.FC<SetupProps> = ({
 
   return(
     <div data-theme="retro">
-      <h1 className='text-xl font-bold mb-3'>Setup</h1>
+      
       <button className="btn btn-success mb-3"
               disabled={twoPlayersChosen}
               onClick={() => {

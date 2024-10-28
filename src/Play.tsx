@@ -20,7 +20,7 @@ export const Play: React.FC<PlayProps> = ({
   return(
     
     <div data-theme="retro">
-      <h1 className='text-xl font-bold mb-3 bg-info p-2 text-center'>Play</h1>
+      
       {
         currentPlayers.map(x => (
           <button className="btn btn-success mb-3 mr-3"
