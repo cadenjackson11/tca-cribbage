@@ -47,7 +47,7 @@ export const Setup: React.FC<SetupProps> = ({
   const twoPlayersChosen = availablePlayers.filter(x => x.checked).length !== 2;
 
   return(
-    <div>
+    <div data-theme="retro">
       <h1 className='text-xl font-bold mb-3'>Setup</h1>
       <button className="btn btn-success mb-3"
               disabled={twoPlayersChosen}

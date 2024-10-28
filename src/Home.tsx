@@ -15,7 +15,7 @@ export const Home: React.FC<HomeProps> = ({
   const nav = useNavigate();
 
   return(
-    <div>
+    <div data-theme="retro">
       <h1 className='text-xl font-bold mb-3'>Home</h1>
       
       <button className="btn btn-success mb-3 onClick={() => nav('/setup')}" 

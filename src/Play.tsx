@@ -19,7 +19,7 @@ export const Play: React.FC<PlayProps> = ({
 
   return(
     
-    <div className="bg-warning ">
+    <div data-theme="retro">
       <h1 className='text-xl font-bold mb-3 bg-info p-2 text-center'>Play</h1>
       {
         currentPlayers.map(x => (
