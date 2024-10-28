@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { validate } from "uuid";
 
@@ -6,12 +6,19 @@ import { validate } from "uuid";
 interface SetupProps {
   previousPlayers: string[];
   setCurrentPlayers: (players: string[]) => void;
+  setTitle: (t: string) => void;
 }
 
 export const Setup: React.FC<SetupProps> = ({
   previousPlayers,
-  setCurrentPlayers
+  setCurrentPlayers,
+  setTitle
 }) => {
+
+  useEffect(
+    () => setTitle('Setup'),
+    []
+  )
 
   const myNav = useNavigate();
 

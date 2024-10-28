@@ -1,17 +1,26 @@
 import { useNavigate } from "react-router-dom";
 import { LeaderboardEntry, GeneralFactsDisplay} from './game-results'
+import { useEffect } from "react";
+import { App } from "antd";
 
 export const AppTitle = "Cribbage Companion App";
 
 interface HomeProps {
   leaderboardData: LeaderboardEntry[];
   generalFactsData: GeneralFactsDisplay;
+  setTitle: (t: string) => void;
 }
 
 export const Home: React.FC<HomeProps> = ({
   leaderboardData,
-  generalFactsData
+  generalFactsData,
+  setTitle
 }) => {
+
+  useEffect(
+    () => setTitle(AppTitle),
+    []
+  );
 
   //use a react hook for navigation
   const nav = useNavigate();

@@ -83,6 +83,7 @@ const App = () => {
         element: <Home 
           leaderboardData={getLeaderboard(gameResults)}
           generalFactsData={getGeneralFacts(gameResults)}
+          setTitle={setTitle}
           
         />
       },
@@ -91,6 +92,7 @@ const App = () => {
         element: <Setup
           previousPlayers={getPreviousPlayers(gameResults)}
           setCurrentPlayers={setCurrentPlayers}
+          setTitle={setTitle}
          />
       },
       {
@@ -98,6 +100,7 @@ const App = () => {
         element: <Play 
           addNewGameResult={addNewGameResult}
           currentPlayers={currentPlayers}
+          setTitle={setTitle}
         />,
       },
     ]
