@@ -4,7 +4,7 @@ import {
   createHashRouter,
   RouterProvider,
 } from "react-router-dom";
-import {Home} from './Home';
+import {AppTitle, Home} from './Home';
 import {Setup} from './Setup';
 import {Play} from './Play';
 
@@ -67,6 +67,7 @@ const App = () => {
 
   const [currentPlayers, setCurrentPlayers] = useState<string[]>([])
 
+  const [title, setTitle] = useState(AppTitle)
 
   // other code... calculated state
 
@@ -110,7 +111,7 @@ const App = () => {
 
       <div className="navbar bg-base-200">
         <span className='text-2xl font-bold'>
-            Cribbage
+            {title}
         </span>
       </div>
 

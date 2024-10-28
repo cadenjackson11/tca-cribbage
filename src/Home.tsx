@@ -1,6 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import { LeaderboardEntry, GeneralFactsDisplay} from './game-results'
 
+export const AppTitle = "Cribbage Companion App";
+
 interface HomeProps {
   leaderboardData: LeaderboardEntry[];
   generalFactsData: GeneralFactsDisplay;
