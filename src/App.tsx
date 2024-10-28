@@ -110,24 +110,25 @@ const App = () => {
   //return jsx
 
   return (
-    <div className="App p-3 ">
-
-      <div className="navbar bg-base-200">
-        <span className='text-2xl font-bold'>
-            {title}
+    <div
+      className="App"
+    >
+      <div 
+        className="navbar bg-base-200"
+      >
+        <span 
+          className="text-2xl font-bold">
+            { title }
         </span>
       </div>
-
-      <div className="p-3">
-      <RouterProvider 
-        router={myRouter}
-      />
+      <div 
+        className="p-3"
+      >
+        <RouterProvider
+          router={myRouter}
+        />
       </div>
     </div>
-    
-  
-  
-    
   );
 }
 
