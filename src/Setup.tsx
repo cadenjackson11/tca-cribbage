@@ -68,7 +68,7 @@ export const Setup: React.FC<SetupProps> = ({
       <div className="card bg-base-100 shadow-xl" >
         <div className="card-body">
           <div className="join">
-            <input className="input input-bordered join-item" placeholder="Enter New Player Name" value={newPlayerName} onChange={(e) => setNewPlayerName(e.target.value)}/>
+            <input className="input input-bordered join-item mr-3" placeholder="Enter New Player Name" value={newPlayerName} onChange={(e) => setNewPlayerName(e.target.value)}/>
             <button className="btn join-item" disabled={newPlayerName.length === 0} onClick={validateAndAddNewPlayer}>Add</button>
           </div>
           {

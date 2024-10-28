@@ -18,11 +18,12 @@ export const Play: React.FC<PlayProps> = ({
   const [startTimeState, setStartTimeState] = useState(new Date().toISOString())
 
   return(
-    <div>
-      <h1 className='text-xl font-bold mb-3'>Play</h1>
+    
+    <div className="bg-warning ">
+      <h1 className='text-xl font-bold mb-3 bg-info p-2 text-center'>Play</h1>
       {
         currentPlayers.map(x => (
-          <button className="btn btn-success mb-3"
+          <button className="btn btn-success mb-3 mr-3"
                   
           onClick={() => {
             addNewGameResult({
@@ -33,12 +34,15 @@ export const Play: React.FC<PlayProps> = ({
             })
             nav(-2)
           }}
-  >
-    {x} Won
-  </button>
+          >
+            {x} Won
+          </button>
+          
         ))
       }
       
+      
     </div>
+    
   );
 }
