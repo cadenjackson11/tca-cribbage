@@ -29,8 +29,7 @@ export const Play: React.FC<PlayProps> = ({
     <div data-theme="autumn" className="p-3">
 
       <div className="bg-neutral-content rounded-box p-3 text-center m-3">
-        <h1 className="text-center text-xl text-white font-bold bg-accent p-3 rounded-box">Dealer</h1>
-        <p>Caden Is Dealing...</p>
+        <h1 className="text-center text-xl text-white font-bold bg-info p-3 rounded-box">Caden is dealing...</h1>
       </div>
 
       <div className="bg-neutral-content rounded-box p-3 m-3">
