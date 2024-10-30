@@ -54,9 +54,9 @@ export const Setup: React.FC<SetupProps> = ({
   const twoPlayersChosen = availablePlayers.filter(x => x.checked).length !== 2;
 
   return(
-    <div data-theme="retro">
+    <div data-theme="autumn" className="p-3 bg-neutral-content">
       
-      <button className="btn btn-success mb-3"
+      <p className="text-center"><button className="btn btn-success mb-3"
               disabled={twoPlayersChosen}
               onClick={() => {
                 setCurrentPlayers(
@@ -71,17 +71,19 @@ export const Setup: React.FC<SetupProps> = ({
         twoPlayersChosen
         ? "Choose Two Players"
         : "Start Playing"
-      }</button>
+      }</button></p>
       <div className="card bg-base-100 shadow-xl" >
         <div className="card-body">
-          <div className="join">
+          <p className="text-center bg-accent rounded-box p-3"><div className="join">
             <input className="input input-bordered join-item mr-3" placeholder="Enter New Player Name" value={newPlayerName} onChange={(e) => setNewPlayerName(e.target.value)}/>
             <button className="btn join-item" disabled={newPlayerName.length === 0} onClick={validateAndAddNewPlayer}>Add</button>
-          </div>
+          </div></p>
+          
           {
             availablePlayers.map(x => (
+              
               <div className="form-control">
-                <label className="cursor-pointer flex mt-3">
+                <label className="cursor-pointer items-center flex mt-3">
                   
                   <input type="checkbox" className="checkbox mr-3" checked={x.checked} onChange={() => setAvailablePlayers(
                     availablePlayers.map(y => ({

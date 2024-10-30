@@ -21,7 +21,7 @@ const dummyGameResults: GameResult[] = [
           "Chris B"
           , "Caden J"
           , "Peter B"
-          , "Swastik A"
+          , "Swastik"
           , "Tom"
       ]
   }
@@ -117,7 +117,7 @@ const App = () => {
         className="navbar bg-base-200"
       >
         <span 
-          className="text-2xl font-bold">
+          className="text-2xl m-auto font-bold">
             { title }
         </span>
       </div>

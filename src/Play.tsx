@@ -26,11 +26,18 @@ export const Play: React.FC<PlayProps> = ({
 
   return(
     
-    <div data-theme="retro">
-      
+    <div data-theme="autumn" className="p-3">
+
+      <div className="bg-neutral-content rounded-box p-3 text-center m-3">
+        <h1 className="text-center text-xl text-white font-bold bg-accent p-3 rounded-box">Dealer</h1>
+        <p>Caden Is Dealing...</p>
+      </div>
+
+      <div className="bg-neutral-content rounded-box p-3 m-3">
+      <h1 className="text-center text-xl text-white font-bold bg-accent p-3 rounded-box">Winner</h1>
       {
         currentPlayers.map(x => (
-          <button className="btn btn-success mb-3 mr-3"
+          <p className="text-center"><button className="btn btn-neutral hover:btn-success m-3"
                   
           onClick={() => {
             addNewGameResult({
@@ -42,11 +49,13 @@ export const Play: React.FC<PlayProps> = ({
             nav(-2)
           }}
           >
-            {x} Won
-          </button>
+            {x}
+          </button></p>
+
           
         ))
       }
+      </div>
       
       
     </div>

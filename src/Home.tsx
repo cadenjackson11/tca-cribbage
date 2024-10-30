@@ -26,15 +26,15 @@ export const Home: React.FC<HomeProps> = ({
   const nav = useNavigate();
 
   return(
-    <div data-theme="retro">
+    <div data-theme="autumn" className="p-3 bg-neutral-content">
 
       
-      <button className="btn btn-success mb-3 onClick={() => nav('/setup')}" 
+      <p className="text-center"><button className="btn btn-success mb-3 onClick={() => nav('/setup')}" 
               onClick={() => nav('/setup')}>
-      Play Cribbage</button>
+      Play Cribbage</button></p>
       <div className="card bg-base-100 shadow-xl mb-3">
         <div className="card body p-3 overflow-x-hidden mb-3">
-          <h2 card-title>General Facts</h2>
+          <h2 card-title className="bg-accent text-center font-bold rounded-box p-3">General Facts</h2>
           {
             leaderboardData.length > 0
             ? (
@@ -83,7 +83,7 @@ export const Home: React.FC<HomeProps> = ({
       </div>
       <div className="card bg-base-100 shadow-xl">
         <div className="card body p-3 overflow-x-hidden">
-          <h2 card-title>Leaderboard</h2>
+          <h2 card-title className="bg-accent text-center font-bold rounded-box p-3">Leaderboard</h2>
           {
             leaderboardData.length > 0
             ? (
