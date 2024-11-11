@@ -23,6 +23,7 @@ export const Play: React.FC<PlayProps> = ({
   const nav = useNavigate();
 
   const [startTimeState, setStartTimeState] = useState(new Date().toISOString())
+  const [deal, setDeal] = useState(false);
 
   return(
     
