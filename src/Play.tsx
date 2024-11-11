@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { GameResult } from "./game-results";
+import { GameResult, CurrentPlayer } from "./game-results";
 import { useEffect, useState } from "react";
 
 interface PlayProps {
@@ -23,7 +23,8 @@ export const Play: React.FC<PlayProps> = ({
   const nav = useNavigate();
 
   const [startTimeState, setStartTimeState] = useState(new Date().toISOString())
-  const [deal, setDeal] = useState(false);
+  
+  
 
   return(
     

@@ -27,6 +27,10 @@ export type LeaderboardEntry = {
     name: string;  
   };
 
+  export type CurrentPlayer = {
+    name: string;
+};
+
 
 export type GeneralFactsDisplay = {
     lastPlayed: string; 
