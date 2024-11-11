@@ -32,7 +32,7 @@ export const Play: React.FC<PlayProps> = ({
       <div className="bg-neutral-content rounded-box p-3 text-center m-3">
         
         <h1 className="text-center text-xl text-white font-bold bg-info p-3 rounded-box">
-          Caden is dealing... 
+          {currentPlayers}
             <span>
               <button className="bg-primary rounded-box p-2.5 ml-3 content-end">Next Turn</button>
             </span>
