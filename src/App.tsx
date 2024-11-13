@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 import {
   createHashRouter,
@@ -10,6 +10,7 @@ import {Play} from './Play';
 
 import { GameResult, LeaderboardEntry, getLeaderboard, getPreviousPlayers, getGeneralFacts} from './game-results';
 
+import localforage from 'localforage';
 
 const dummyGameResults: GameResult[] = [
   {
@@ -79,6 +80,32 @@ const App = () => {
 
   const [darkMode, setDarkMode] = useState(false);
 
+
+  useEffect(
+    () => {
+      
+      const loadDarkMode = async () => {
+
+        const savedDarkMode = await localforage.getItem<boolean>("darkMode") ?? false;
+
+        if (!ignore) {
+          setDarkMode(savedDarkMode);
+        }
+      }
+
+      let ignore = false;
+
+      loadDarkMode();
+      
+      return () => {
+        ignore = true;
+      }
+    }
+    , []
+  );
+
+
+  
   const myRouter = createHashRouter(
     [
       {
@@ -129,7 +156,10 @@ const App = () => {
           <input 
             type="checkbox"
             checked={darkMode}
-            onChange={() => setDarkMode(!darkMode)}
+            onChange={async () => {
+              await localforage.setItem<boolean>("darkMode", !darkMode);
+              setDarkMode(!darkMode);
+            }}
            />
 
           

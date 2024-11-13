@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { LeaderboardEntry, GeneralFactsDisplay} from './game-results'
 import { useEffect } from "react";
-import { App } from "antd";
 
 export const AppTitle = "Cribbage Companion App";
 
