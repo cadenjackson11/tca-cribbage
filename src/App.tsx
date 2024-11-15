@@ -8,7 +8,7 @@ import {AppTitle, Home} from './Home';
 import {Setup} from './Setup';
 import {Play} from './Play';
 
-import { GameResult, LeaderboardEntry, getLeaderboard, getPreviousPlayers, getGeneralFacts} from './game-results';
+import { CurrentPlayer, GameResult, LeaderboardEntry, getLeaderboard, getPreviousPlayers, getGeneralFacts, getAvgTurnsPerGame} from './game-results';
 
 import localforage from 'localforage';
 
@@ -23,6 +23,23 @@ const dummyGameResults: GameResult[] = [
           , "Peter B"
           , "Swastik"
           , "Tom"
+      ],
+      turns: [
+        {
+          turnNumber: 1,
+          player: "Chris B",
+          messedUpDeal: 1
+        },
+        {
+          turnNumber: 1,
+          player: "Tom",
+          messedUpDeal: 1
+        },
+        {
+          turnNumber: 2,
+          player: "Chris B",
+          messedUpDeal: 0
+        },
       ]
   }
   , {
@@ -34,6 +51,18 @@ const dummyGameResults: GameResult[] = [
           , "Hermione"
           , "Ron"
           , "Tom"
+      ],
+      turns: [
+        {
+          turnNumber: 1,
+          player: "Ron",
+          messedUpDeal: 1
+        },
+        {
+          turnNumber: 1,
+          player: "Tom",
+          messedUpDeal: 1
+        }
       ]    
   }
   , {
@@ -44,6 +73,39 @@ const dummyGameResults: GameResult[] = [
           "Harry"
           , "Chris B"
           , "Tom"
+      ],
+      turns: [
+        {
+          turnNumber: 1,
+          player: "Chris B",
+          messedUpDeal: 1
+        },
+        {
+          turnNumber: 1,
+          player: "Tom",
+          messedUpDeal: 1
+        },
+        {
+          turnNumber: 2,
+          player: "Chris B",
+          messedUpDeal: 0
+        },
+        {
+          turnNumber: 2,
+          player: "Tom",
+          messedUpDeal: 0
+        },
+        {
+          turnNumber: 3,
+          player: "Chris B",
+          messedUpDeal: 0
+        },
+        {
+          turnNumber: 3,
+          player: "Tom",
+          messedUpDeal: 0
+        }
+        
       ]
   }
   , {
@@ -53,6 +115,18 @@ const dummyGameResults: GameResult[] = [
       , players: [
           "Tom"
           , "Jack"
+      ],
+      turns: [
+        {
+          turnNumber: 1,
+          player: "Ron",
+          messedUpDeal: 1
+        },
+        {
+          turnNumber: 1,
+          player: "Tom",
+          messedUpDeal: 1
+        }
       ]
   }
 ];
@@ -65,7 +139,7 @@ const App = () => {
   const [gameResults, setGameResults] = useState(dummyGameResults);
   //const [gameResults, setGameResults] = useState<GameResult[]>([]);
 
-  const [currentPlayers, setCurrentPlayers] = useState<string[]>([])
+  const [currentPlayers, setCurrentPlayers] = useState<CurrentPlayer[]>([]);
 
   const [title, setTitle] = useState(AppTitle)
 

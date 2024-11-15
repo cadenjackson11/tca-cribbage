@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { CurrentPlayer } from "./game-results";
 
 
 interface SetupProps {
   previousPlayers: string[];
-  setCurrentPlayers: (players: string[]) => void;
+  setCurrentPlayers: (players: CurrentPlayer[]) => void;
   setTitle: (t: string) => void;
 }
 
@@ -61,7 +62,9 @@ export const Setup: React.FC<SetupProps> = ({
                 setCurrentPlayers(
                   availablePlayers
                     .filter(x => x.checked)
-                    .map(x => x.name)
+                    .map(x => ({
+                      name: x.name
+                    }))
                     
                 );
                 myNav('/play')
