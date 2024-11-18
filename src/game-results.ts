@@ -35,6 +35,7 @@ export type LeaderboardEntry = {
     losses: number;
     avg: string;
     name: string;  
+    
   };
 
   export type CurrentPlayer = {
@@ -56,19 +57,31 @@ export type GeneralFactsDisplay = {
 
 export const getLeaderboard = (
   results: GameResult[]
-  ): LeaderboardEntry[] => getPreviousPlayers(results)
-    .map(
-        player => getLeaderboardEntry(
-            results
-            , player
-        )
-    )
-    .sort(
-        (a, b) => (parseFloat(b.avg) * 1000 + b.wins + b.losses) 
-            - (parseFloat(a.avg) * 1000 + a.wins + a.losses)
-    )
-  ;
+  ): LeaderboardEntry[] => {
+    const lbEntries = getPreviousPlayers(results).map((player) =>
+        getLeaderboardEntry(results, player)
+    );
 
+    const playersWithWins = lbEntries
+        .filter((x) => x.wins > 0)
+        .sort(
+            (a, b) =>
+                (parseFloat(b.avg) * 1000 + b.wins + b.losses)
+                - (parseFloat(a.avg) * 1000 + a.wins + a.losses)
+        );
+
+        const playersWithoutWins = lbEntries
+        .filter((x) => x.wins === 0)
+        .sort(
+          (a, b) => a.losses - b.losses
+        );
+    
+        return [
+            ...playersWithWins
+            , ...playersWithoutWins
+        ];
+
+}
 
   export const getPreviousPlayers = (results: GameResult[]) => {
     
@@ -195,8 +208,9 @@ export const getMonthBasedGamesDistribution = (results: GameResult[]) => {
 
 
 export const getLeaderboardEntry = (
-  results: GameResult[]
-  , player: string
+  results: GameResult[],
+  player: string,
+  //turn: Turn[]
 ): LeaderboardEntry => {
 
   const playerWins = results.filter(
@@ -209,6 +223,14 @@ export const getLeaderboardEntry = (
       )
   ).length;
 
+//   const playerBadDeals = results.filter(
+//     x => x.turns.filter(
+//         y => y.messedUpDeal.some(
+//             z => z === turn
+//         ) 
+//     )
+//   ).length;
+
   return {
       wins: playerWins
       , losses: playerGames - playerWins 
@@ -218,5 +240,6 @@ export const getLeaderboardEntry = (
           : "0.000"
 
       , name: player
+      
   };
 };

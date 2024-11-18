@@ -94,6 +94,8 @@ export const Home: React.FC<HomeProps> = ({
                 <th>W</th>
                 <th>L</th>
                 <th>AVG</th>
+                <th>Player</th>
+                <th>Bad Deals</th>
               </tr>
             </thead>
             <tbody>
@@ -104,6 +106,7 @@ export const Home: React.FC<HomeProps> = ({
                     <td>{x.losses}</td>
                     <td>{x.avg}</td>
                     <td>{x.name}</td>
+                    <td>...</td>
                   </tr>
 
                 ))
