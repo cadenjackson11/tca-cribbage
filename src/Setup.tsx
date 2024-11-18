@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { CurrentPlayer } from "./game-results";
+import { P } from "human-readable";
 
 
 interface SetupProps {
@@ -105,3 +106,4 @@ export const Setup: React.FC<SetupProps> = ({
     </div>
   );
 }
+

@@ -54,11 +54,11 @@ const updateTotalBadDeals = (
     x => ({
       ...x,
       messedUpDeal: player === x.player && turnNumber === x.turnNumber
-        ? x.messedUpDeal === 0
+        ? x.messedUpDeal === 0 && delta < 0
           ? 0
           : x.messedUpDeal === 1
             ? 1
-            : x.messedUpDeal
+            : x.messedUpDeal + delta
         : x.messedUpDeal  
     })
   )

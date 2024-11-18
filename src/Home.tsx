@@ -8,6 +8,7 @@ interface HomeProps {
   leaderboardData: LeaderboardEntry[];
   generalFactsData: GeneralFactsDisplay;
   setTitle: (t: string) => void;
+  
 }
 
 export const Home: React.FC<HomeProps> = ({
