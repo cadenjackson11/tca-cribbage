@@ -71,6 +71,10 @@ const updateTotalBadDeals = (
     <div data-theme="autumn" className="p-3">
 
       <div className="bg-neutral-content rounded-box p-3 m-3">
+
+        <div className="bg-accent rounded-box p-3 mb-3  text-xl text-white font-bold">
+          Dealer
+        </div>
         
         {
           turns.map((x, i) => (
@@ -78,8 +82,8 @@ const updateTotalBadDeals = (
               className="flex gap-3 mb-3"
               key={`${x.turnNumber} ${x.player}`}
             >
-                <div className="align-top text-2xl">
-                    {x.turnNumber}
+                <div className="align-top text-2xl text-primary ml-8">
+                    Turn {x.turnNumber} -
                 </div>
 
                 <div className="text-2xl123">
@@ -94,7 +98,7 @@ const updateTotalBadDeals = (
                                   <div className="flex gap-3">
                                       <div className="join flex">
                                           <button 
-                                            className="btn btn-sm btn-outline join-item"
+                                            className="btn btn-sm btn-outline join-item bg-secondary"
                                             onClick={() => updateTotalBadDeals(
                                                 x.player
                                                 , x.turnNumber
@@ -103,8 +107,8 @@ const updateTotalBadDeals = (
                                           >
                                             Click For A Deal Gone Wrong
                                           </button>
-                                          <span className="join-item text-xl w-8 text-center">
-                                              {x.messedUpDeal}
+                                          <span className="join-item ml-3 text-xl text-center">
+                                              {x.messedUpDeal} Messed Up
                                           </span>
                                           
                                       </div>
@@ -126,15 +130,15 @@ const updateTotalBadDeals = (
           ))
         }
 
-        <div className="join mt-10 ml-9">
+        <div className="join mt-10 ml-8">
             <button 
-              className="join-item btn btn-outline btn-sm"
+              className="join-item btn btn-outline btn-sm bg-warning"
               onClick={() => turns.length > 1 && setTurns(turns.slice(0, -1))}  
             >
                 Undo Deal
             </button>
             <button
-              className="join-item btn btn-outline btn-sm"
+              className="join-item btn btn-outline btn-sm bg-success"
               onClick={() => setTurns([
                 ...turns
                 , {
@@ -154,8 +158,8 @@ const updateTotalBadDeals = (
 
       </div>
 
-      <div className="bg-neutral-content rounded-box p-3 m-3">
-      <h1 className="text-center text-xl text-white font-bold bg-accent p-3 rounded-box">Winner</h1>
+      <div className="bg-neutral-content rounded-box p-3">
+      <h1 className=" text-xl text-white font-bold bg-accent p-3 mb-3 rounded-box">Winner</h1>
 
       {
         currentPlayers.map(x => (

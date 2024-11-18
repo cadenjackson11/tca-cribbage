@@ -221,7 +221,7 @@ const App = () => {
         className="navbar bg-base-200"
       >
         <span 
-          className="text-2xl m-auto font-bold">
+          className="text-4xl m-auto font-bold">
             { title }
         </span>
 
