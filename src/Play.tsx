@@ -68,9 +68,9 @@ const updateTotalBadDeals = (
 
   return(
     
-    <div data-theme="autumn" className="p-3">
+    <div data-theme="autumn" className="p-3 bg-neutral-content rounded-box p-3 m-3">
 
-      <div className="bg-neutral-content rounded-box p-3 m-3">
+      
 
         <div className="bg-accent rounded-box p-3 mb-3  text-xl text-white font-bold">
           Dealer
@@ -156,7 +156,7 @@ const updateTotalBadDeals = (
             </button>
         </div>
 
-      </div>
+      
 
       <div className="bg-neutral-content rounded-box p-3">
       <h1 className=" text-xl text-white font-bold bg-accent p-3 mb-3 rounded-box">Winner</h1>

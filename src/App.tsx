@@ -8,7 +8,7 @@ import {AppTitle, Home} from './Home';
 import {Setup} from './Setup';
 import {Play} from './Play';
 
-import { CurrentPlayer, GameResult, LeaderboardEntry, getLeaderboard, getPreviousPlayers, getGeneralFacts, getAvgTurnsPerGame} from './game-results';
+import { CurrentPlayer, GameResult, LeaderboardEntry, getLeaderboard, getPreviousPlayers, getGeneralFacts, getAvgTurnsPerGame, getMonthBasedGamesDistribution} from './game-results';
 
 import localforage from 'localforage';
 
@@ -188,7 +188,7 @@ const App = () => {
           leaderboardData={getLeaderboard(gameResults)}
           generalFactsData={getGeneralFacts(gameResults)}
           setTitle={setTitle}
-          
+          gamesPlayedByMonthData={getMonthBasedGamesDistribution(gameResults)}
         />
       },
       {

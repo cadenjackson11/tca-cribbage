@@ -8,13 +8,14 @@ interface HomeProps {
   leaderboardData: LeaderboardEntry[];
   generalFactsData: GeneralFactsDisplay;
   setTitle: (t: string) => void;
-  
+  gamesPlayedByMonthData: {month: string, gameCount: number}[];
 }
 
 export const Home: React.FC<HomeProps> = ({
   leaderboardData,
   generalFactsData,
-  setTitle
+  setTitle,
+  gamesPlayedByMonthData
 }) => {
 
   useEffect(
@@ -103,6 +104,38 @@ export const Home: React.FC<HomeProps> = ({
                     <td>{x.losses}</td>
                     <td>{x.avg}</td>
                     <td>{x.name}</td>
+                  </tr>
+
+                ))
+              }
+            </tbody>
+          </table>
+            )
+            : (
+              <p>Play a game to see the leaderboard!</p>
+            )
+          }
+        </div>
+      </div>
+      <div className="card bg-base-100 shadow-xl mt-3">
+        <div className="card body p-3 overflow-x-hidden">
+          <h2 card-title className="bg-accent text-center font-bold rounded-box p-3">Monthly Games Played</h2>
+          {
+            leaderboardData.length > 0
+            ? (
+          <table className="table table-zebra">
+            <thead>
+              <tr>
+                <th>MONTH</th>
+                <th>GAMES</th>
+              </tr>
+            </thead>
+            <tbody>
+              {
+                gamesPlayedByMonthData.map(x => (
+                  <tr key={x.month}>
+                    <td>{x.month}</td>
+                    <td>{x.gameCount}</td>
                   </tr>
 
                 ))

@@ -136,6 +136,57 @@ export const getAvgTurnsPerGame = (results: GameResult[]) => {
     );
 };
 
+
+
+export const getMonthBasedGamesDistribution = (results: GameResult[]) => {
+
+    //get start months 
+    const gameStartMonths = results.map(
+        //x => new Date(x.startTime).getMonth()
+        //x => new Date(x.startTime).getMonth() + 1
+        x => new Date(x.startTime).toLocaleDateString(
+            'default',
+            {
+                month: 'short'
+            }
+        )
+    );
+
+    //group by months...
+    // const groupedByMonth = Map.groupBy(
+    //     gameStartMonths,
+    //     x => x
+    //)
+
+    const groupedByMonth = gameStartMonths.reduce(
+        (acc, x) => acc.set(
+            x,
+            (acc.get(x) ?? 0) + 1
+        ),
+        new Map<string, number>([
+            ['Jan', 0],
+            ['Feb', 0],
+            ['Mar', 0],
+            ['Apr', 0],
+            ['May', 0],
+            ['Jun', 0],
+            ['July', 0],
+            ['Aug', 0],
+            ['Sep', 0],
+            ['Oct', 0],
+            ['Nov', 0],
+            ['Dec', 0]
+        ])
+    )
+
+    return(
+        [...groupedByMonth].map(x => ({
+            month: x[0],
+            gameCount: x[1]
+        }))
+    )
+};
+
 //
 // Helper funcs...
 //
