@@ -26,7 +26,7 @@ export const How: React.FC<HowToProps> = ({
             Back To Home
         </button>
       </p>
-      <div className="bg-secondary shadow-xl" >
+      <div className="bg-neutral-content shadow-xl" >
         <div className="card-body bg-neutral rounded-box m-3">
           <h1 className="text-center text-2xl font-bold">Cribbage</h1>
           <p className="text-white text-center">
