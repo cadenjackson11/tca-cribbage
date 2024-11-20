@@ -33,6 +33,15 @@ export const Home: React.FC<HomeProps> = ({
       <p className="text-center"><button className="btn btn-success mb-3 onClick={() => nav('/setup')}" 
               onClick={() => nav('/setup')}>
       Play Cribbage</button></p>
+      <br />
+      <p className="text-center">
+        <button 
+          className="btn btn-success mb-3 onClick={() => nav('/how')}"
+          onClick={() => nav('/how')}>
+            How To Play
+        </button>
+      </p>
+
       <div className="card bg-base-100 shadow-xl mb-3">
         <div className="card body p-3 overflow-x-hidden mb-3">
           <h2 card-title className="bg-accent text-center font-bold rounded-box p-3">General Facts</h2>

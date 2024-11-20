@@ -7,6 +7,8 @@ import {
 import {AppTitle, Home} from './Home';
 import {Setup} from './Setup';
 import {Play} from './Play';
+import { How } from './How';
+
 
 import { CurrentPlayer, GameResult, LeaderboardEntry, getLeaderboard, getPreviousPlayers, getGeneralFacts, getAvgTurnsPerGame, getMonthBasedGamesDistribution} from './game-results';
 
@@ -207,6 +209,12 @@ const App = () => {
           setTitle={setTitle}
         />,
       },
+      {
+        path: "/how",
+        element: <How 
+          setTitle={setTitle}
+        />,
+      },
     ]
   )
 
@@ -226,7 +234,6 @@ const App = () => {
         </span>
 
         <label className="swap swap-rotate">
-          
           <input 
             type="checkbox"
             checked={darkMode}
