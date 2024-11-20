@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import './App.css';
 import {
   createHashRouter,
@@ -156,13 +156,11 @@ const App = () => {
 
   const [darkMode, setDarkMode] = useState(false);
 
+  const emailModalRef = useRef<HTMLDialogElement | null>(null);
 
-<<<<<<< Updated upstream
-=======
   const [emailOnModal, setEmailOnModal] = useState("");
 
   //special react hook use last
->>>>>>> Stashed changes
   useEffect(
     () => {
       
@@ -259,10 +257,18 @@ const App = () => {
         className="navbar bg-base-200"
       >
         <span 
-          className="text-4xl m-auto font-bold">
+          className="text-4xl ml-1 font-bold">
             { title }
         </span>
 
+        <div className="flex gap-1 ml-auto">
+          <button 
+            className='btn'
+            onClick={() => emailModalRef.current?.showModal()}>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-8">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12a7.5 7.5 0 0 0 15 0m-15 0a7.5 7.5 0 1 1 15 0m-15 0H3m16.5 0H21m-1.5 0H12m-8.457 3.077 1.41-.513m14.095-5.13 1.41-.513M5.106 17.785l1.15-.964m11.49-9.642 1.149-.964M7.501 19.795l.75-1.3m7.5-12.99.75-1.3m-6.063 16.658.26-1.477m2.605-14.772.26-1.477m0 17.726-.26-1.477M10.698 4.614l-.26-1.477M16.5 19.794l-.75-1.299M7.5 4.205 12 12m6.894 5.785-1.149-.964M6.256 7.178l-1.15-.964m15.352 8.864-1.41-.513M4.954 9.435l-1.41-.514M12.002 12l-3.75 6.495" />
+              </svg>
+          </button>
         <label className="swap swap-rotate">
           <input 
             type="checkbox"
@@ -291,6 +297,9 @@ const App = () => {
               d="M21.64,13a1,1,0,0,0-1.05-.14,8.05,8.05,0,0,1-3.37.73A8.15,8.15,0,0,1,9.08,5.49a8.59,8.59,0,0,1,.25-2A1,1,0,0,0,8,2.36,10.14,10.14,0,1,0,22,14.05,1,1,0,0,0,21.64,13Zm-9.5,6.69A8.14,8.14,0,0,1,7.08,5.22v.27A10.15,10.15,0,0,0,17.22,15.63a9.79,9.79,0,0,0,2.1-.22A8.11,8.11,0,0,1,12.14,19.73Z" />
           </svg>
         </label>
+        </div>
+
+        
       </div>
       
       <div 
@@ -300,8 +309,6 @@ const App = () => {
           router={myRouter}
         />
       </div>
-<<<<<<< Updated upstream
-=======
 
 
       <dialog 
@@ -333,7 +340,6 @@ const App = () => {
         </div>
       </dialog>
 
->>>>>>> Stashed changes
     </div>
   );
 }
