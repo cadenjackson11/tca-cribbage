@@ -103,7 +103,7 @@ const updateTotalBadDeals = (
                                             Click For A Deal Gone Wrong
                                           </button>
                                           <span className="join-item ml-3 text-xl text-center">
-                                              {x.messedUpDeal} Messed Up
+                                              <p>{x.player} With {x.messedUpDeal} Bad Deal(s)</p>
                                           </span>
                                           
                                       </div>
