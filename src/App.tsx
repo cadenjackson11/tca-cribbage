@@ -157,6 +157,12 @@ const App = () => {
   const [darkMode, setDarkMode] = useState(false);
 
 
+<<<<<<< Updated upstream
+=======
+  const [emailOnModal, setEmailOnModal] = useState("");
+
+  //special react hook use last
+>>>>>>> Stashed changes
   useEffect(
     () => {
       
@@ -172,6 +178,30 @@ const App = () => {
       let ignore = false;
 
       loadDarkMode();
+      
+      return () => {
+        ignore = true;
+      }
+    }
+    , []
+  );
+
+
+  useEffect(
+    () => {
+      
+      const loadEmail = async () => {
+
+        const savedEmail = await localforage.getItem<string>("email") ?? "";
+
+        if (!ignore) {
+          setEmailOnModal(savedEmail);
+        }
+      }
+
+      let ignore = false;
+
+      loadEmail();
       
       return () => {
         ignore = true;
@@ -270,6 +300,40 @@ const App = () => {
           router={myRouter}
         />
       </div>
+<<<<<<< Updated upstream
+=======
+
+
+      <dialog 
+        ref={emailModalRef}
+        className="modal modal-bottom sm:modal-middle">
+        <div className="modal-box w-11/12 max-w-5xl">
+          <h3 className="font-bold text-lg">
+            <input 
+              className="input input-bordered w-full" 
+              placeholder="Enter email to load/save game results..." 
+              value={emailOnModal}
+              onChange={(e) => setEmailOnModal(e.target.value)}
+              />
+              
+          </h3>
+          <p className="py-4">Press ESC key or click the button below to close</p>
+          <div className="modal-action">
+            <form method="dialog">
+              <button 
+                className="btn"
+                onClick={
+                  async () => {
+                    await localforage.setItem<string>("email", emailOnModal);
+                  }
+                }
+              >Close</button>
+            </form>
+          </div>
+        </div>
+      </dialog>
+
+>>>>>>> Stashed changes
     </div>
   );
 }
