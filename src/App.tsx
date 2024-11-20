@@ -314,7 +314,7 @@ const App = () => {
       <dialog 
         ref={emailModalRef}
         className="modal modal-bottom sm:modal-middle">
-        <div className="modal-box w-11/12 max-w-5xl">
+        <div className="modal-box">
           <h3 className="font-bold text-lg">
             <input 
               className="input input-bordered w-full" 
