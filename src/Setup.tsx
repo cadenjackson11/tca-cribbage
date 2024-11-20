@@ -2,8 +2,6 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { CurrentPlayer } from "./game-results";
 
-
-
 interface SetupProps {
   previousPlayers: string[];
   setCurrentPlayers: (players: CurrentPlayer[]) => void;
