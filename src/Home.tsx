@@ -9,13 +9,15 @@ interface HomeProps {
   generalFactsData: GeneralFactsDisplay;
   setTitle: (t: string) => void;
   gamesPlayedByMonthData: {month: string, gameCount: number}[];
+  avgTurnsPerGame: number;
 }
 
 export const Home: React.FC<HomeProps> = ({
   leaderboardData,
   generalFactsData,
   setTitle,
-  gamesPlayedByMonthData
+  gamesPlayedByMonthData,
+  avgTurnsPerGame
 }) => {
 
   useEffect(
@@ -152,11 +154,23 @@ export const Home: React.FC<HomeProps> = ({
               }
             </tbody>
           </table>
+          
             )
             : (
               <p>Play a game to see the leaderboard!</p>
             )
           }
+          <div className="card card bg-base-100 shadow-xl mb-3">
+                <div className="card-body p-3 overflow-x-hidden">
+                    <h2 className="card-title">
+                        Avg Turns Per Game
+                    </h2>
+                    <h1 className="text-5xl font-bold">
+                        {avgTurnsPerGame.toFixed(2)}
+                    </h1>
+                </div>
+            </div>
+
         </div>
       </div>
     </div>

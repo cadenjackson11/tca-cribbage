@@ -219,6 +219,7 @@ const App = () => {
           generalFactsData={getGeneralFacts(gameResults)}
           setTitle={setTitle}
           gamesPlayedByMonthData={getMonthBasedGamesDistribution(gameResults)}
+          avgTurnsPerGame={getAvgTurnsPerGame(gameResults)}
         />
       },
       {
