@@ -200,6 +200,21 @@ export const getMonthBasedGamesDistribution = (results: GameResult[]) => {
     )
 };
 
+export const getDealerFacts = (results: GameResult[]) => {
+    
+    const arrayOfBadDeals = results.map(
+        x => x.turns.filter(
+            y => y.player
+        ).reduce(
+            (acc, y) => acc + y.messedUpDeal,
+            0
+        )
+    );
+
+    return arrayOfBadDeals;
+
+};
+
 //
 // Helper funcs...
 //
@@ -223,13 +238,8 @@ export const getLeaderboardEntry = (
       )
   ).length;
 
-//   const playerBadDeals = results.filter(
-//     x => x.turns.filter(
-//         y => y.messedUpDeal.some(
-//             z => z === turn
-//         ) 
-//     )
-//   ).length;
+
+
 
   return {
       wins: playerWins

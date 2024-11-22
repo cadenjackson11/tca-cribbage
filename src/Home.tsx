@@ -10,6 +10,7 @@ interface HomeProps {
   setTitle: (t: string) => void;
   gamesPlayedByMonthData: {month: string, gameCount: number}[];
   avgTurnsPerGame: number;
+  dealerFacts: {messedUpDeal: number}[];
 }
 
 export const Home: React.FC<HomeProps> = ({
@@ -17,7 +18,8 @@ export const Home: React.FC<HomeProps> = ({
   generalFactsData,
   setTitle,
   gamesPlayedByMonthData,
-  avgTurnsPerGame
+  avgTurnsPerGame,
+  dealerFacts
 }) => {
 
   useEffect(
@@ -160,6 +162,59 @@ export const Home: React.FC<HomeProps> = ({
               <p>Play a game to see the leaderboard!</p>
             )
           }
+
+
+
+
+
+
+
+            <div
+                className="card bg-base-100 shadow-xl mb-3">
+                <div
+                    className="card-body p-3 overflow-x-hidden">
+                    <h2 className="card-title">
+                        Bad Deals
+                    </h2>
+                    {
+                        dealerFacts.length > 0
+                            ? (
+                                <table className="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Bad Deals</th>                                        
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {
+                                            dealerFacts.map(x =>(
+                                                <tr
+                                                    key={x.messedUpDeal}
+                                                >
+                                                    <td>
+                                                        {x.messedUpDeal}
+                                                    </td>
+                                                </tr>
+                                            ))
+                                        }
+                                    </tbody>
+                                </table>
+                            )
+                            : (
+                                <p>
+                                    Go mess up some deals!
+                                </p>
+                            )
+                    }
+                </div>
+            </div>
+
+
+
+
+
+
+          
           <div className="card card bg-base-100 shadow-xl mb-3">
                 <div className="card-body p-3 overflow-x-hidden">
                     <h2 className="card-title">
