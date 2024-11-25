@@ -10,7 +10,6 @@ interface HomeProps {
   setTitle: (t: string) => void;
   gamesPlayedByMonthData: {month: string, gameCount: number}[];
   avgTurnsPerGame: number;
-  //dealerFacts: {messedUpDeal: number}[];
   messedUpDeal: number;
 }
 
