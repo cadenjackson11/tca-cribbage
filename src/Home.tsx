@@ -164,7 +164,7 @@ export const Home: React.FC<HomeProps> = ({
             )
           }
 
-
+          
             <div
                 className="card bg-base-100 shadow-xl mb-3">
                 <div
