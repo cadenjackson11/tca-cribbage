@@ -220,7 +220,7 @@ const App = () => {
           setTitle={setTitle}
           gamesPlayedByMonthData={getMonthBasedGamesDistribution(gameResults)}
           avgTurnsPerGame={getAvgTurnsPerGame(gameResults)} 
-          dealerFacts={[]}          
+          messedUpDeal={getDealerFacts(gameResults)}
         />
       },
       {

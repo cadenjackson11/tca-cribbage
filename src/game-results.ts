@@ -150,6 +150,27 @@ export const getAvgTurnsPerGame = (results: GameResult[]) => {
 };
 
 
+export const getDealerFacts = (results: GameResult[]) => {
+    
+    const arrayOfBadDeals = results.map(
+        x => Math.max(...x.turns.map(
+            y => y.messedUpDeal
+        ))
+    );
+
+    return (
+        arrayOfBadDeals.length > 0
+            ? arrayOfBadDeals.reduce(
+                (acc, x) => acc + x,
+                0
+            ) / arrayOfBadDeals.length
+            : 0
+            )
+    ;
+
+};
+
+
 
 export const getMonthBasedGamesDistribution = (results: GameResult[]) => {
 
@@ -200,20 +221,7 @@ export const getMonthBasedGamesDistribution = (results: GameResult[]) => {
     )
 };
 
-export const getDealerFacts = (results: GameResult[]) => {
-    
-    const arrayOfBadDeals = results.map(
-        x => x.turns.filter(
-            y => y.player
-        ).reduce(
-            (acc, y) => acc + y.messedUpDeal,
-            0
-        )
-    );
 
-    return arrayOfBadDeals;
-
-};
 
 //
 // Helper funcs...
