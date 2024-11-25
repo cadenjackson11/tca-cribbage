@@ -106,7 +106,6 @@ export const Home: React.FC<HomeProps> = ({
                 <th>L</th>
                 <th>AVG</th>
                 <th>Player</th>
-                <th>Bad Deals</th>
               </tr>
             </thead>
             <tbody>
@@ -117,7 +116,6 @@ export const Home: React.FC<HomeProps> = ({
                     <td>{x.losses}</td>
                     <td>{x.avg}</td>
                     <td>{x.name}</td>
-                    <td>...</td>
                   </tr>
 
                 ))
@@ -169,9 +167,9 @@ export const Home: React.FC<HomeProps> = ({
                 <div
                     className="card-body p-3 overflow-x-hidden">
                     <h2 className="card-title">
-                        Avg Bad Deals Per Game
+                        Percentage of games with a bad deal
                     </h2>
-                    <h1 className="text-5xl font-bold">{messedUpDeal.toFixed(2)}</h1>
+                    <h1 className="text-5xl font-bold">{messedUpDeal * 100}%</h1>
                 </div>
             </div>
           
