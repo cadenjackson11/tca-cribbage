@@ -151,12 +151,15 @@ const App = () => {
   const addNewGameResult = async (newResult: GameResult) => {
 
     try {
-      await saveGameToCloud(
-        "cj@mc.edu",
-        "tca-cribbage-24f",
-        newResult.endTime,
-        newResult
-      );
+
+      if(emailForCloudApi.length > 0){
+        await saveGameToCloud(
+          emailForCloudApi,
+          "tca-cribbage-24f",
+          newResult.endTime,
+          newResult
+        );
+      }
 
       setGameResults([
         ...gameResults,
@@ -175,6 +178,8 @@ const App = () => {
 
   const [emailOnModal, setEmailOnModal] = useState("");
 
+  const [emailForCloudApi, setEmailForCloudApi] = useState("");
+
   //special react hook use last
   useEffect(
     () => {
@@ -185,6 +190,7 @@ const App = () => {
 
         if (!ignore) {
           setDarkMode(savedDarkMode);
+          
         }
       }
 
@@ -209,6 +215,7 @@ const App = () => {
 
         if (!ignore) {
           setEmailOnModal(savedEmail);
+          setEmailForCloudApi(savedEmail);
         }
       }
 
@@ -348,10 +355,15 @@ const App = () => {
                 className="btn"
                 onClick={
                   async () => {
-                    await localforage.setItem<string>("email", emailOnModal);
+                    const savedEmail = await localforage.setItem<string>("email", emailOnModal);
+
+                    if(savedEmail.length > 0) {
+                      setEmailForCloudApi(savedEmail);
+                    }
+
                   }
                 }
-              >Close</button>
+              >Save</button>
             </form>
           </div>
         </div>
