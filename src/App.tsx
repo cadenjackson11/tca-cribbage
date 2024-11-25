@@ -9,7 +9,17 @@ import {Setup} from './Setup';
 import {Play} from './Play';
 import { How } from './How';
 
-import { CurrentPlayer, GameResult, LeaderboardEntry, getLeaderboard, getPreviousPlayers, getGeneralFacts, getAvgTurnsPerGame, getMonthBasedGamesDistribution, getDealerFacts} from './game-results';
+import { 
+    CurrentPlayer, 
+    GameResult, 
+    LeaderboardEntry, 
+    getLeaderboard, 
+    getPreviousPlayers, 
+    getGeneralFacts, 
+    getAvgTurnsPerGame, 
+    getMonthBasedGamesDistribution, 
+    getDealerFacts
+} from './game-results';
 
 import localforage from 'localforage';
 
@@ -229,6 +239,36 @@ const App = () => {
     }
     , []
   );
+
+
+  useEffect(
+    () => {
+      
+      const loadGameResults = async () => {
+
+        const savedGameResults = await loadGamesFromCloud(
+          emailForCloudApi,
+          "tca-cribbage-24f"
+        )
+
+        if (!ignore) {
+          setGameResults(savedGameResults);
+        }
+      }
+
+      let ignore = false;
+
+      if (emailForCloudApi.length > 0) {
+        loadGameResults();
+      }
+      
+      return () => {
+        ignore = true;
+      }
+    }
+    , [emailForCloudApi]
+  );
+
 
 
   
