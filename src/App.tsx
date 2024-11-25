@@ -9,10 +9,11 @@ import {Setup} from './Setup';
 import {Play} from './Play';
 import { How } from './How';
 
-
 import { CurrentPlayer, GameResult, LeaderboardEntry, getLeaderboard, getPreviousPlayers, getGeneralFacts, getAvgTurnsPerGame, getMonthBasedGamesDistribution, getDealerFacts} from './game-results';
 
 import localforage from 'localforage';
+
+import { saveGameToCloud, loadGamesFromCloud } from './tca-cloud-api'
 
 const dummyGameResults: GameResult[] = [
   {
@@ -147,10 +148,24 @@ const App = () => {
 
   // other code... calculated state
 
-  const addNewGameResult = (newResult: GameResult) => setGameResults([
-    ...gameResults,
-    newResult
-  ]);
+  const addNewGameResult = async (newResult: GameResult) => {
+
+    try {
+      await saveGameToCloud(
+        "cj@mc.edu",
+        "tca-cribbage-24f",
+        newResult.endTime,
+        newResult
+      );
+
+      setGameResults([
+        ...gameResults,
+        newResult
+      ]);
+    } catch(e) {
+      console.error(e);
+    }
+  }
 
     //think about this for your switch dealer addition!!!
 
