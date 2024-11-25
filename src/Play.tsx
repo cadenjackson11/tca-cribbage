@@ -88,9 +88,7 @@ const updateTotalBadDeals = (
                          </h3>
                          {
                           turns.length - 1 === i
-                            ? (
-                              <div className="flex flex-col gap-3">
-                                  <div className="flex gap-3">
+                            ? (                                    
                                       <div className="join flex">
                                           <button 
                                             className="btn btn-sm btn-outline join-item bg-secondary"
@@ -102,13 +100,11 @@ const updateTotalBadDeals = (
                                           >
                                             Click For A Deal Gone Wrong
                                           </button>
-                                          <span className="join-item ml-3 text-xl text-center">
-                                              <p>{x.player} With {x.messedUpDeal} Bad Deal(s)</p>
-                                          </span>
                                           
-                                      </div>
-                                  </div>
-                              </div>
+                                          <span className="join-item ml-3 text-xl text-center">
+                                              <p>{x.messedUpDeal}</p>
+                                          </span>
+                                      </div>                                                             
                             )
                             : (
                               <div className="flex flex-col gap-3 text-sm">

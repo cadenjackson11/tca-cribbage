@@ -72,7 +72,13 @@ export const How: React.FC<HowToProps> = ({
             Finally, select the name of the player who won down below in the "Winner" section. This will return you to the Home screen and 
             you can now see the updated information in the leaderboards!
           </p>
-          <h2 className="text-success text-center text-4xl font-bold">Have Fun!</h2>
+          <p className="text-center">
+        <button 
+          className="btn btn-ghost text-success text-4xl mb-3 onClick={() => nav('/')}"
+          onClick={() => myNav(-1)}>
+            Have Fun!
+        </button>
+      </p>
         </div>
       </div>
     </div>
