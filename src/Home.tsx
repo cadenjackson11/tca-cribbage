@@ -11,7 +11,7 @@ interface HomeProps {
   gamesPlayedByMonthData: {month: string, gameCount: number}[];
   avgTurnsPerGame: number;
   messedUpDeal: number;
-}
+};
 
 export const Home: React.FC<HomeProps> = ({
   leaderboardData,
