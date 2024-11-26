@@ -29,6 +29,7 @@ export const Play: React.FC<PlayProps> = ({
         turnNumber: 1
         , player: currentPlayers[0].name
         , messedUpDeal: 0
+        , skunks: 0
     }
 ]);
 
@@ -63,6 +64,25 @@ const updateTotalBadDeals = (
     })
   )
 );
+
+const updateSkunk = (
+  player: string,
+  turnNumber: number,
+  delta: number
+) => setTurns(
+  turns.map(
+    x => ({
+      ...x,
+      skunks: player === x.player && turnNumber === x.turnNumber
+        ? x.skunks === 0 && delta < 0
+          ? 0
+          : x.skunks === 1
+            ? 1
+            : x.skunks + delta
+        : x.skunks  
+    })
+  )
+);
   
 
   return(
@@ -77,12 +97,12 @@ const updateTotalBadDeals = (
               className="flex gap-3 mb-3"
               key={`${x.turnNumber} ${x.player}`}
             >
-                <div className="align-top text-2xl text-primary ml-8">
+                <div className="align-top text-2xl text-primary">
                     Turn {x.turnNumber} -
                 </div>
 
                 <div className="text-2xl123">
-                    <div className="flex flex-col gap-3">
+                    <div className="flex flex-col">
                         <h3 className="text-2xl font-bold123">
                             {x.player}
                          </h3>
@@ -101,8 +121,23 @@ const updateTotalBadDeals = (
                                             Deal Gone Wrong
                                           </button>
                                           
-                                          <span className="join-item ml-3 text-xl text-center">
+                                          <span className="join-item ml-3 mr-3 text-xl text-center">
                                               <p>{x.messedUpDeal}</p>
+                                          </span>
+                                          
+                                          <button 
+                                            className="btn btn-sm btn-outline join-item bg-secondary"
+                                            onClick={() => updateSkunk(
+                                                x.player
+                                                , x.turnNumber
+                                                , +1
+                                            )}
+                                          >
+                                            Skunk Em?
+                                          </button>
+                                          
+                                          <span className="join-item ml-3 text-xl text-center">
+                                              <p>{x.skunks}</p>
                                           </span>
                                       </div>                                                             
                             )
@@ -140,6 +175,7 @@ const updateTotalBadDeals = (
                     turns.length % currentPlayers.length
                   ].name
                   , messedUpDeal: 0
+                  , skunks: 0
                 }
               ])}
             >
@@ -179,19 +215,13 @@ const updateTotalBadDeals = (
                       winner: x.name,
                       players: currentPlayers.map(y => y.name),
                       turns: turns
+                      
                     })
                     nav(-2)
                   }}
                   >
                     {x.name} Won
                 </button>
-                {/* <button
-                    onClick={() => {
-
-                    }}
-                >
-                    Skunked 'Em?
-                </button> */}
               </p>
           </div>
           

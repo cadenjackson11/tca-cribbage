@@ -15,7 +15,7 @@ export type Turn = {
     turnNumber: number;
     player: string;
     messedUpDeal: number;
-    
+    skunks: number;
 };
 
 
@@ -26,7 +26,7 @@ export type GameResult = {
   winner: string;
   players: string[];
 
-  //skunks: number;
+  
 
   turns: Turn[];
 };
@@ -174,25 +174,25 @@ export const getDealerFacts = (results: GameResult[]) => {
 };
 
 
-// export const getSkunked = (results: GameResult[]) => {
+export const getSkunked = (results: GameResult[]) => {
     
-//     const arrayOfSkunks = results.map(
-//         x => Math.max(...x.turns.map(
-//             y => y.skunks
-//         ))
-//     );
+    const arrayOfSkunks = results.map(
+        x => Math.max(...x.turns.map(
+            y => y.skunks
+        ))
+    );
 
-//     return (
-//         arrayOfSkunks.length > 0
-//             ? arrayOfSkunks.reduce(
-//                 (acc, x) => acc + x,
-//                 0
-//             ) / arrayOfSkunks.length
-//             : 0
-//             )
-//     ;
+    return (
+        arrayOfSkunks.length > 0
+            ? arrayOfSkunks.reduce(
+                (acc, x) => acc + x,
+                0
+            ) / arrayOfSkunks.length
+            : 0
+            )
+    ;
 
-// };
+};
 
 
 

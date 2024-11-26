@@ -18,7 +18,8 @@ import {
     getGeneralFacts, 
     getAvgTurnsPerGame, 
     getMonthBasedGamesDistribution, 
-    getDealerFacts
+    getDealerFacts,
+    getSkunked
 } from './game-results';
 
 import localforage from 'localforage';
@@ -163,6 +164,7 @@ const App = () => {
           gamesPlayedByMonthData={getMonthBasedGamesDistribution(gameResults)}
           avgTurnsPerGame={getAvgTurnsPerGame(gameResults)} 
           messedUpDeal={getDealerFacts(gameResults)}
+          skunks={getSkunked(gameResults)}
         />
       },
       {

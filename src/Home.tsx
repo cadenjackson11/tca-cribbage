@@ -11,6 +11,7 @@ interface HomeProps {
   gamesPlayedByMonthData: {month: string, gameCount: number}[];
   avgTurnsPerGame: number;
   messedUpDeal: number;
+  skunks: number;
 };
 
 export const Home: React.FC<HomeProps> = ({
@@ -19,7 +20,8 @@ export const Home: React.FC<HomeProps> = ({
   setTitle,
   gamesPlayedByMonthData,
   avgTurnsPerGame,
-  messedUpDeal
+  messedUpDeal,
+  skunks
 }) => {
 
   useEffect(
@@ -169,7 +171,7 @@ export const Home: React.FC<HomeProps> = ({
                     <h2 className="card-title">
                         Percentage of games with a bad deal
                     </h2>
-                    <h1 className="text-5xl font-bold">{messedUpDeal * 100}%</h1>
+                    <h1 className="text-5xl font-bold">{(messedUpDeal * 100).toFixed(2)}%</h1>
                 </div>
             </div>
           
@@ -181,6 +183,18 @@ export const Home: React.FC<HomeProps> = ({
                     <h1 className="text-5xl font-bold">
                         {avgTurnsPerGame.toFixed(2)}
                     </h1>
+                </div>
+            </div>
+
+            <div
+                className="card bg-base-100 shadow-xl mb-3">
+                <div
+                    className="card-body p-3 overflow-x-hidden">
+                    <h2 className="card-title">
+                        Percentage of games with a Skunk
+                    </h2>
+                    
+                    <h1 className="text-5xl font-bold">{(skunks * 100).toFixed(2)}%</h1>
                 </div>
             </div>
 
