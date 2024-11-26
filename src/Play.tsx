@@ -98,7 +98,7 @@ const updateTotalBadDeals = (
                                                 , +1
                                             )}
                                           >
-                                            Click For A Deal Gone Wrong
+                                            Deal Gone Wrong
                                           </button>
                                           
                                           <span className="join-item ml-3 text-xl text-center">
@@ -169,21 +169,30 @@ const updateTotalBadDeals = (
                   } Bad Deals
               </div>
 
-              <p className="text-center"><button className="btn btn-neutral hover:btn-success m-3"
+              <p className="text-center">
+                <button className="btn btn-neutral hover:btn-success m-3"
                   
-          onClick={() => {
-            addNewGameResult({
-              startTime: startTimeState,
-              endTime: new Date().toISOString(),
-              winner: x.name,
-              players: currentPlayers.map(y => y.name),
-              turns: turns
-            })
-            nav(-2)
-          }}
-          >
-            {x.name} Won
-          </button></p>
+                  onClick={() => {
+                    addNewGameResult({
+                      startTime: startTimeState,
+                      endTime: new Date().toISOString(),
+                      winner: x.name,
+                      players: currentPlayers.map(y => y.name),
+                      turns: turns
+                    })
+                    nav(-2)
+                  }}
+                  >
+                    {x.name} Won
+                </button>
+                {/* <button
+                    onClick={() => {
+
+                    }}
+                >
+                    Skunked 'Em?
+                </button> */}
+              </p>
           </div>
           
         ))

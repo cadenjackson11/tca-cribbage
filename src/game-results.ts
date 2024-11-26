@@ -26,6 +26,8 @@ export type GameResult = {
   winner: string;
   players: string[];
 
+  //skunks: number;
+
   turns: Turn[];
 };
 
@@ -34,7 +36,8 @@ export type LeaderboardEntry = {
     wins: number;
     losses: number;
     avg: string;
-    name: string;  
+    name: string;
+    
     
   };
 
@@ -171,6 +174,29 @@ export const getDealerFacts = (results: GameResult[]) => {
 };
 
 
+// export const getSkunked = (results: GameResult[]) => {
+    
+//     const arrayOfSkunks = results.map(
+//         x => Math.max(...x.turns.map(
+//             y => y.skunks
+//         ))
+//     );
+
+//     return (
+//         arrayOfSkunks.length > 0
+//             ? arrayOfSkunks.reduce(
+//                 (acc, x) => acc + x,
+//                 0
+//             ) / arrayOfSkunks.length
+//             : 0
+//             )
+//     ;
+
+// };
+
+
+
+
 
 export const getMonthBasedGamesDistribution = (results: GameResult[]) => {
 
@@ -259,6 +285,7 @@ export const getLeaderboardEntry = (
           : "0.000"
 
       , name: player
+      
       
   };
 };

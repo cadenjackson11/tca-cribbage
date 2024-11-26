@@ -74,7 +74,7 @@ export const How: React.FC<HowToProps> = ({
           </p>
           <p className="text-center">
         <button 
-          className="btn btn-ghost text-success text-4xl mb-3 onClick={() => nav('/')}"
+          className="btn btn-success text-neutral text-4xl mb-3 onClick={() => nav('/')}"
           onClick={() => myNav(-1)}>
             Have Fun!
         </button>
