@@ -16,7 +16,7 @@ export type Turn = {
     player: string;
     messedUpDeal: number;
     skunks: number;
-};
+}
 
 
 export type GameResult = {
