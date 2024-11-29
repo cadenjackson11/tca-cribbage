@@ -1,17 +1,20 @@
 import { useNavigate } from "react-router-dom";
 import { GameResult, CurrentPlayer, Turn } from "./game-results";
 import { useEffect, useState } from "react";
+import {Timer} from "./Timer"
 
 interface PlayProps {
   addNewGameResult: (gr: GameResult) => void;
   currentPlayers: CurrentPlayer[];
   setTitle: (t: string) => void;
+  
 }
 
 export const Play: React.FC<PlayProps> = ({
   addNewGameResult,
   currentPlayers,
-  setTitle
+  setTitle,
+  
 
 }) => {
 
@@ -34,17 +37,21 @@ export const Play: React.FC<PlayProps> = ({
 ]);
 
 
-const messedUpDealers = currentPlayers.map(x => ({
-  name: x.name,
-  messedUpDealTotal: turns.filter(
-    y => y.player === x.name
-  ).map(
-    y => y.messedUpDeal
-  ).reduce(
-    (acc, y) => acc + y,
-    0
-  )
-}));
+
+
+
+
+// const messedUpDealers = currentPlayers.map(x => ({
+//   name: x.name,
+//   messedUpDealTotal: turns.filter(
+//     y => y.player === x.name
+//   ).map(
+//     y => y.messedUpDeal
+//   ).reduce(
+//     (acc, y) => acc + y,
+//     0
+//   )
+// }));
 
 const updateTotalBadDeals = (
   player: string,
@@ -85,9 +92,22 @@ const updateSkunk = (
 );
   
 
+
+
   return(
     
     <div data-theme="autumn" className="p-3 bg-neutral-content rounded-box p-3 m-3">
+        
+        <div className="bg-accent rounded-box p-3 mb-3  text-xl text-white font-bold">
+          Timer
+        </div>
+
+        <div>
+          <p>
+            <Timer initialTime={0} />
+          </p>
+        </div>
+
         <div className="bg-accent rounded-box p-3 mb-3  text-xl text-white font-bold">
           Dealer
         </div>
