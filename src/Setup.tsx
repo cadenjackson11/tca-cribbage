@@ -78,7 +78,8 @@ export const Setup: React.FC<SetupProps> = ({
           <p className="text-center bg-accent rounded-box p-3"><div className="join">
             <input className="input input-bordered join-item mr-3" placeholder="Enter New Player Name" value={newPlayerName} onChange={(e) => setNewPlayerName(e.target.value)}/>
             <button className="btn join-item" disabled={newPlayerName.length === 0} onClick={validateAndAddNewPlayer}>Add</button>
-          </div></p>
+          </div>
+          </p>
           
           {
             availablePlayers.map(x => (
