@@ -53,7 +53,9 @@ export const Timer: React.FC<TimerProps> = ({ initialTime }) => {
         <button onClick={stopTimer} disabled={!isRunning} className='mr-1 bg-error rounded-box p-1.5'>
           Stop
         </button>
-        <button onClick={resetTimer} className='bg-warning rounded-box p-1.5'>Reset</button>
+        <button onClick={resetTimer} className='bg-warning rounded-box p-1.5'>
+          Reset
+        </button>
     </div>
   );
 };
