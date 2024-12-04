@@ -2,7 +2,7 @@
   "name": "tca-cribbage",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://2024-fall-afe-mowe.github.io/tca-cribbage",
+  "homepage": "https://cadenjackson11.github.io/tca-cribbage",
   "dependencies": {
     "@aws-sdk/util-dynamodb": "^3.699.0",
     "@testing-library/jest-dom": "^5.17.0",
