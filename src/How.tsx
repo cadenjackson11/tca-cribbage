@@ -33,7 +33,7 @@ export const How: React.FC<HowToProps> = ({
             Cribbage is a fun but lengthily described card game. I have decided to outsource this explanation to the official 
             Cribbage website. Check out the link below!
           </p>
-          <a href="https://bicyclecards.com/how-to-play/cribbage" className="link-info text-center font-bold">How To Play Cribbage</a>
+          <a target="_blank" href="https://bicyclecards.com/how-to-play/cribbage" className="link-info text-center font-bold">How To Play Cribbage</a>
         </div>
         <div className="card-body bg-neutral rounded-box m-3">
           <h1 className="text-center text-2xl font-bold">Cribbage Companion</h1>
